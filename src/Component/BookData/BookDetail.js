@@ -2,9 +2,7 @@
 import React from 'react';
 import { useParams, Link } from "react-router-dom";
 
-// const BookDetail = ({ book, show, onClose }) => {
-
-const BookDetail = ({ books}) => {
+const BookDetail = ({ books }) => {
 
     const { id } = useParams();
 
@@ -12,32 +10,55 @@ const BookDetail = ({ books}) => {
     const selectedBook = books.find((book) => book.id === id);
 
     return (
-        <div>
-            {selectedBook ? (
-                <div>
-                    <h3>{selectedBook.volumeInfo.title}</h3>
-                    <p>{selectedBook.volumeInfo.description}</p>
-                    <img src={selectedBook.volumeInfo.imageLinks.smallThumbnail} alt='book' />
-                </div>
-            ) : (
-                <p>Book not found</p>
-            )}
+        <div className='bookDetail'>
+            <div className='viewBook'>
+                {selectedBook ? (
+                    <div className='view'>
+                        <img src={selectedBook.volumeInfo.imageLinks.thumbnail} alt='book' />
+                        <div className='info'>
+                            <h1>{selectedBook.volumeInfo.title}</h1>
+                            <h3>{selectedBook.volumeInfo.authors}</h3>
+                            <p className='description'>{selectedBook.volumeInfo.description}</p>
+                            <div className='small'>
+                                <p>Avg Rating : {selectedBook.volumeInfo.averageRating} | Rating Count : {selectedBook.volumeInfo.ratingsCount} | Publisher : {selectedBook.volumeInfo.publisher} | Language: {selectedBook.volumeInfo.language}</p>
+                            </div>
+                            <div className='btn'>
+                                <a href={selectedBook.volumeInfo.infoLink}><button>More Info!</button></a>
+                                <a href={selectedBook.volumeInfo.previewLink}><button>Now Read!</button></a>
+                            </div>
+                        </div>
+                    </div>
+                ) : (
+                    <h1>Book not found</h1>
+                )}
 
-            <Link to="/">Back to Main Page</Link>
+                <Link to="/" id='home'><button>Back to Main Page</button></Link>
+            </div>
 
             {/* Render more books */}
-            <div className="more-books">
-                <h3>More Books</h3>
+            <h1 className='more-books'>More Books Like This</h1>
+            <div className="container">
                 {books
                     .filter((book) => book.id !== id) // Exclude the selected book
-                    .slice(0, 5) // Display the first 5 books after the selected one
-                    .map((book) => (
-                        <div key={book.id}>
-                            <h4>{book.volumeInfo.title}</h4>
-                            <p>{book.volumeInfo.description}</p>
-                            {/* Add more details here */}
-                        </div>
-                    ))}
+                    .slice(0, 6) // Display the first 5 books after the selected one
+                    .map((item, index) => {
+                        let thumbnail = item.volumeInfo.imageLinks && item.volumeInfo.imageLinks.thumbnail;
+                        if (thumbnail !== undefined) {
+                            return (
+                                <div className="card" key={index}>
+                                    <Link to={`/book/${item.id}`}>
+                                        <img src={thumbnail} alt="books" />
+                                        <div className="bottom">
+                                            <h3 className="title">{item.volumeInfo.title}</h3>
+                                        </div>
+                                    </Link>
+                                </div>
+                            );
+                        } else {
+                            return null; // Return null for elements without thumbnail or amount
+                        }
+                    })
+                }
             </div>
         </div>
     )

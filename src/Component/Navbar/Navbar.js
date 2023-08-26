@@ -1,6 +1,7 @@
 
 // Navbar.js
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 
 const Navbar = ({ onSearch }) => {
@@ -19,7 +20,7 @@ const Navbar = ({ onSearch }) => {
 
   return (
     <nav className="navbar">
-      <div className="logo">FreeBooks</div>
+      <div className="logo"><Link to="/" id='home'>FreeBooks</Link></div>
       <div className="search-bar">
         <input type="text" placeholder="Search..." value={query} onChange={(e) => setQuery(e.target.value)} onKeyPress={handleKeyPress} />
         <button onClick={handleSearch}><i className="fa-solid fa-magnifying-glass"></i></button>

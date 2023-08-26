@@ -7,7 +7,7 @@ const Books = ({ books }) => {
     <>
       <div className="container">
         {books.map((item, index) => {
-          let thumbnail = item.volumeInfo.imageLinks && item.volumeInfo.imageLinks.smallThumbnail;
+          let thumbnail = item.volumeInfo.imageLinks && item.volumeInfo.imageLinks.thumbnail;
           if (thumbnail !== undefined) {
             return (
               <div className="card" key={index}>

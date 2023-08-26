@@ -17,12 +17,6 @@ const App = () => {
     fetchBooks(query);
   }, [query]);
 
-  // const fetchBooks = async (query) => {
-  //   axios.get('https://www.googleapis.com/books/v1/volumes?q=' + query + '&key=' + API_KEY)
-  //     .then((res) => setBookData(res.data.items))
-  //     .catch((err) => console.log(err))
-  // }
-
   const fetchBooks = async (searchQuery) => {
     try {
       const response1 = await fetch('https://www.googleapis.com/books/v1/volumes?q=' + searchQuery + '&key=' + API_KEY)
