@@ -20,7 +20,7 @@ const Navbar = ({ onSearch }) => {
 
   return (
     <nav className="navbar">
-      <div className="logo"><Link to="/" id='home'>FreeBooks</Link></div>
+      <div className="logo"><Link to="/" id='home'>OnlineBooks</Link></div>
       <div className="search-bar">
         <input type="text" placeholder="Search..." value={query} onChange={(e) => setQuery(e.target.value)} onKeyPress={handleKeyPress} />
         <button onClick={handleSearch}><i className="fa-solid fa-magnifying-glass"></i></button>
