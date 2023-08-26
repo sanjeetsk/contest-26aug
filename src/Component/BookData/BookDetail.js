@@ -22,7 +22,7 @@ const BookDetail = ({ books }) => {
                             <div className='small'>
                                 <p>Avg Rating : {selectedBook.volumeInfo.averageRating} | Rating Count : {selectedBook.volumeInfo.ratingsCount} | Publisher : {selectedBook.volumeInfo.publisher} | Language: {selectedBook.volumeInfo.language}</p>
                             </div>
-                            <div className='btn'>
+                            <div  className='btn'>
                                 <a href={selectedBook.volumeInfo.infoLink}><button>More Info!</button></a>
                                 <a href={selectedBook.volumeInfo.previewLink}><button>Now Read!</button></a>
                             </div>
@@ -40,7 +40,7 @@ const BookDetail = ({ books }) => {
             <div className="container">
                 {books
                     .filter((book) => book.id !== id) // Exclude the selected book
-                    .slice(0, 6) // Display the first 5 books after the selected one
+                    .slice(0, 8) // Display the first 5 books after the selected one
                     .map((item, index) => {
                         let thumbnail = item.volumeInfo.imageLinks && item.volumeInfo.imageLinks.thumbnail;
                         if (thumbnail !== undefined) {
