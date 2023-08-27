@@ -1,16 +1,33 @@
 ## Project Overview
 ### Task
-    Make a real life shopping cart application where there are 2 pages - First is the home page where you fetch a list of products from an api and the products are displayed.      The second page is the my cart Page.
-    The goal is to accomplish the cart functionality using redux. So make a redux state for your cart and make a redux state of all the products that you get from the API.
-#### Home Page:
-    Fetch the products from this API link - execute a get request at this link - https://dummyjson.com/products
-    This gives a list of 30 products, all of which have an id, title, price and image. Show all of these in the UI and create an add to the cart button.
-    Map the products as shown in the home page and on click of add to the cart button - add the object in the redux state.
-    Make sure that if an item is already added you cannot add it again.
-#### My Cart Page:
-    Get your cart products from the redux state and map them as shown.
-    On click of remove from the cart - again update the redux state everytime.
-    On the right side, make a sidebar where you show the final checkout list and also the total price.
-    On click of checkout button - get rid of the entire cart and reset the redux state of myCart and display a success message saying that items have been checkout out.
+    The goal of this project is to create a responsive online bookstore application. 
+    This application fetches data from Google Books API, displays it in an elegant UI as per the provided Figma design, provides a search feature, and gives detailed information about each book.
+#### Project Brief:
+    Use the Google Books API to fetch and display data about books.
+    Display a list of books obtained from the API requests in a visually appealing manner using the Figma design provided.
+    Implement a search feature to find and display books based on user queries.
+    Show a detailed information panel for each book when clicked, following the design in Figma.
+#### APIs Used:
+    We'll be hitting two APIs as soon as the user lands on the page:
+    https://www.googleapis.com/books/v1/volumes?q=harry+potter
+    https://www.googleapis.com/books/v1/volumes?q=Sherlock+Holmes
+    Change the q according to your query.
 
-Figma Link- https://www.figma.com/file/qDWVMfoVJknM2YYYiC2kz6/Untitled?node-id=0-1&t=fCS662OrInm9Rt9E-0
+#### Project Setup Set up a new React application using create-react-app.
+
+#### Fetching and Displaying
+    Initial Book Data Use useEffect to fetch data from atleast two API calls (search for harry+potter and sherlock+holmes) when the app loads.
+    Use useState to store this book data.
+    Map through this data to display the books on the home screen as per the Figma design.
+
+#### Book Detail View
+    When a book is clicked, expand its banner to full width and show detailed information about the book.
+    The "Read Now" button should redirect the user to the previewLink from the book data.
+    The "More Info" button should redirect the user to the infoLink from the book data.
+
+#### Search Feature
+    Implement a search bar in the top navbar.
+    When the search button is clicked, fetch data from the Google Books API     with the user's query and display the results. Make sure that whatever the user types becomes the q in the API endpoint.
+
+Figma - https://www.figma.com/file/HmJl1YcejIXNc6Hr1ZQpjm/BookStore-UI?type=design&node-id=0%3A1&mode=design&t=DUj3MYs02a04qpfj-1
+
